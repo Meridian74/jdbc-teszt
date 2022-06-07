@@ -20,19 +20,19 @@ public class AppController {
         ipi.initSampleItems();
         ipi.initSampleItemPrices();
 
-        // tasks: olvasás
+        // task: reading a file
         TransactionFileReader tfr = new TransactionFileReader();
         List<Transaction> transactions = tfr.readTransaction("tranzakciok.json");
 
-        // tasks: file-ba írás
+        // task: writing into file
         TransactionFileWriter tfw = new TransactionFileWriter();
         tfw.saveTransactionsAndCalculatedSums("mentett_tranzakaciok.txt", transactions);
 
-        // tasks: adatbázisba mentés
+        // task: saving into database
         TransactionSaveIntoDB tsidb = new TransactionSaveIntoDB();
         tsidb.saveTransactionsIntoDB(transactions);
 
-        // vége a program futásának
+        // end of program
         System.out.println("Az alkalmazás futása véget ért!");
     }
 
