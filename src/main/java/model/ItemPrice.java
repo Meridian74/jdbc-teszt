@@ -1,32 +1,17 @@
 package model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ItemPrice {
 
    long itemId;
    long price;
-
-   public ItemPrice() {
-   }
-
-   public ItemPrice(long itemId, long price) {
-      this.itemId = itemId;
-      this.price = price;
-   }
-
-   public long getItemId() {
-      return itemId;
-   }
-
-   public void setItemId(long itemId) {
-      this.itemId = itemId;
-   }
-
-   public long getPrice() {
-      return price;
-   }
-
-   public void setPrice(Long price) {
-      this.price = price;
-   }
 
 }
