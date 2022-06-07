@@ -1,0 +1,58 @@
+{
+  "transactions": [
+    {
+      "transactionId": 1,
+      "purchaseTime": "2022-05-02",
+      "items": [
+        {
+          "itemId": 1,
+          "quantity": 5,
+          "itemName": "banán",
+          "description": "származási hely: Kolumbia"
+        },
+        {
+          "itemId": 2,
+          "quantity": 2,
+          "itemName": "narancs",
+          "description": "származási hely: Spanyolország"
+        }
+      ]
+    },
+    {
+      "transactionId": 2,
+      "purchaseTime": "2022-05-10",
+      "items": [
+        {
+          "itemId": 3,
+          "quantity": 15,
+          "itemName": "füge",
+          "description": "származási hely: Görögország"
+        }
+      ]
+    },
+    {
+      "transactionId": 3,
+      "purchaseTime": "2022-05-11",
+      "items": [
+        {
+          "itemId": 1,
+          "quantity": 2,
+          "itemName": "banán",
+          "description": "származási hely: Kolumbia"
+        },
+        {
+          "itemId": 3,
+          "quantity": 4,
+          "itemName": "füge",
+          "description": "származási hely: Görögország"
+        },
+        {
+          "itemId": 4,
+          "quantity": 9,
+          "itemName": "datolya",
+          "description": "származási hely: Egyiptom"
+        }
+      ]
+    }
+  ]
+}

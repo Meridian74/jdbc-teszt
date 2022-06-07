@@ -1,0 +1,3 @@
+tranzakció ID: 1, végösszege: 908
+tranzakció ID: 2, végösszege: 634
+tranzakció ID: 3, végösszege: 1942
