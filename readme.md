@@ -25,8 +25,8 @@ Checking this solution yue can use own database server, but you have to create a
 Or you can use docker (docker desktop), using attached testDB.bat script file.
 
 Basic information for using postgreSql DB:
-Database Server TCP port number: 5436 (if you use attached docker script)
-Database name: "jdbc_teszt"
-Database user name: "user"
-Database user password: "abc123"
+- Database Server TCP port number: 5436 (if you use attached docker script)
+- Database name: "jdbc_teszt"
+- Database user name: "user"
+- Database user password: "abc123"
 ---------------------------------
