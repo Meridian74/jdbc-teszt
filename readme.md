@@ -2,12 +2,12 @@ ASSIGNED TASK:
 --------------
 A company developing a webshop needs an app to handle their orders. A file contains the details of the products purchased and their associated transaction ID (transactionId). There can be several products in one transaction!
 For products, the file must contain the following information:
-• transactionId - long
-• purchaseTime - date
-• itemId - integer
-• quantity - short
-• itemName - string
-• description - string
+- transactionId - long
+- purchaseTime - date
+- itemId - integer
+- quantity - short
+- itemName - string
+- description - string
 
 The unit stores the unit price of products in a database per product ID (itemId).
 
