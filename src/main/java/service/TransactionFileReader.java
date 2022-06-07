@@ -47,7 +47,7 @@ public class TransactionFileReader {
             else if (line.contains("purchaseTime")) {
                String dateString = getDateString(line);
                LocalDate date = LocalDate.parse(dateString);
-               transaction.setDate(date);
+               transaction.setTransactionDate(date);
             }
             else if (line.contains("quantity")) {
                Long quantity = getNumFromLine(line);

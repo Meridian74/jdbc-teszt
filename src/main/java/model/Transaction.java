@@ -51,9 +51,6 @@ public class Transaction {
       return transactionDate;
    }
 
-   public void setDate(LocalDate date) {
-      this.transactionDate = date;
-   }
 
    public List<Item> getItems() {
       return items;
