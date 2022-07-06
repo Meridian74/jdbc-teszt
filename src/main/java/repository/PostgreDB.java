@@ -18,7 +18,7 @@ public interface PostgreDB {
       try {
          connection = DriverManager.getConnection(JDBC_CONNECTOR +
                      SERVER_HOSTNAME + ":" + PORT_NUMBER + "/" + DB_NAME,
-               DB_USERNAME, DB_PASSWORD);
+                     DB_USERNAME, DB_PASSWORD);
 
       } catch (SQLException e) {
          e.printStackTrace();

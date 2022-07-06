@@ -33,4 +33,8 @@ public class Transaction {
       }
    }
 
+   public LocalDate getDate() {
+      return transactionDate;
+   }
+
 }
