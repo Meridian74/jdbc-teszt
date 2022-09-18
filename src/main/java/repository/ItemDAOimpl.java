@@ -1,19 +1,25 @@
 package repository;
 
 import model.Item;
-
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ItemDAOpostgre implements PostgreDB, ItemDAO {
+public class ItemDAOimpl implements ItemDAO {
+
+   DataSource dataSource;
+
+   public ItemDAOimpl(DataSource dataSource) {
+      this.dataSource = dataSource;
+   }
 
    @Override
    public Item findItemById(long id) {
       Item item = new Item();
 
-      try (Connection conn = PostgreDB.getConnection();
+      try (Connection conn = dataSource.getConnection();
            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM items WHERE item_id = ?")
       ) {
          pstm.setLong(1, id);

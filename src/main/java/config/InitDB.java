@@ -1,8 +1,8 @@
-package repository;
+package config;
 
 import model.Item;
 import model.ItemPrice;
-
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -10,12 +10,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InitDB implements PostgreDB {
+public class InitDB {
 
+   private final DataSource dataSource;
+
+   public InitDB(DataSource dataSource) {
+      this.dataSource = dataSource;
+   }
 
    public void createItemPriceTable() {
 
-      try (Connection conn = PostgreDB.getConnection();
+      try (Connection conn = dataSource.getConnection();
            Statement sm = conn.createStatement()
       ) {
          sm.execute("DROP TABLE IF EXISTS item_prices");
@@ -39,7 +44,7 @@ public class InitDB implements PostgreDB {
             new ItemPrice(4, 789)
       ));
 
-      try (Connection conn = PostgreDB.getConnection()) {
+      try (Connection conn = dataSource.getConnection()) {
          for (ItemPrice ip : itemPrices) {
             try (PreparedStatement pstm = conn.prepareStatement("INSERT INTO item_prices" +
                   "(item_id, item_price) VALUES (?, ?)")) {
@@ -62,7 +67,7 @@ public class InitDB implements PostgreDB {
             new Item(4, "datolya", "származási hely: Egyiptom")
       ));
 
-      try (Connection conn = PostgreDB.getConnection()) {
+      try (Connection conn = dataSource.getConnection()) {
          for (Item item : items) {
             try (PreparedStatement pstm = conn.prepareStatement("INSERT INTO items" +
                   "(item_id, name, description) VALUES (?, ?, ?)")) {
@@ -79,7 +84,7 @@ public class InitDB implements PostgreDB {
    }
 
    public void createItemTable() {
-      try (Connection conn = PostgreDB.getConnection();
+      try (Connection conn = dataSource.getConnection();
            Statement sm = conn.createStatement()
       ) {
          sm.execute("DROP TABLE IF EXISTS items CASCADE");
@@ -96,7 +101,7 @@ public class InitDB implements PostgreDB {
    }
 
    public void createTransactionTable() {
-      try (Connection conn = PostgreDB.getConnection();
+      try (Connection conn = dataSource.getConnection();
            Statement sm = conn.createStatement()
       ) {
          sm.execute("DROP TABLE IF EXISTS transactions CASCADE");
@@ -113,7 +118,7 @@ public class InitDB implements PostgreDB {
    }
 
    public void createTransactionAndItemsTable() {
-      try (Connection conn = PostgreDB.getConnection();
+      try (Connection conn = dataSource.getConnection();
            Statement sm = conn.createStatement()
       ) {
          sm.execute("DROP TABLE IF EXISTS trans_and_items");

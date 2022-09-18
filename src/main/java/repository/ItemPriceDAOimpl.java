@@ -1,19 +1,25 @@
 package repository;
 
 import model.ItemPrice;
-
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ItemPriceDAOpostgre implements PostgreDB, ItemPriceDAO {
+public class ItemPriceDAOimpl implements ItemPriceDAO {
+
+   DataSource dataSource;
+
+   public ItemPriceDAOimpl(DataSource dataSource) {
+      this.dataSource = dataSource;
+   }
 
    @Override
    public ItemPrice findItemPriceById(long id) {
       ItemPrice itemPrice = new ItemPrice();
 
-      try (Connection conn = PostgreDB.getConnection();
+      try (Connection conn = dataSource.getConnection();
            PreparedStatement pstm = conn.prepareStatement("SELECT * FROM item_prices WHERE item_id = ?")
       ) {
          pstm.setLong(1, id);

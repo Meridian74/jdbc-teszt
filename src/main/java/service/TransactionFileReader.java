@@ -4,10 +4,7 @@ import model.Item;
 import model.ItemPrice;
 import model.Transaction;
 import repository.ItemDAO;
-import repository.ItemDAOpostgre;
 import repository.ItemPriceDAO;
-import repository.ItemPriceDAOpostgre;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,8 +15,13 @@ import java.util.List;
 
 public class TransactionFileReader {
 
-   private final ItemDAO itemDAO = new ItemDAOpostgre();
-   private final ItemPriceDAO itemPriceDAO = new ItemPriceDAOpostgre();
+   private final ItemDAO itemDAO;
+   private final ItemPriceDAO itemPriceDAO;
+
+   public TransactionFileReader(ItemDAO itemDAO, ItemPriceDAO itemPriceDAO) {
+      this.itemDAO = itemDAO;
+      this.itemPriceDAO = itemPriceDAO;
+   }
 
    public List<Transaction> readTransaction(String fileName) {
 

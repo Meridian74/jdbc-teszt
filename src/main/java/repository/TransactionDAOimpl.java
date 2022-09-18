@@ -2,18 +2,24 @@ package repository;
 
 import model.Item;
 import model.Transaction;
-
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class TransactionDAOpostgre implements PostgreDB, TransactionDAO {
+public class TransactionDAOimpl implements TransactionDAO {
+
+   private final DataSource dataSource;
+
+   public TransactionDAOimpl(DataSource dataSource) {
+      this.dataSource = dataSource;
+   }
 
    @Override
    public void saveAll(List<Transaction> transactions) {
 
-      try (Connection conn = PostgreDB.getConnection()) {
+      try (Connection conn = dataSource.getConnection()) {
          for (Transaction tr : transactions) {
             try (PreparedStatement pstm = conn.prepareStatement("INSERT INTO transactions" +
                   "(transaction_id, transaction_date, sum) VALUES (?, ?, ?)")) {
