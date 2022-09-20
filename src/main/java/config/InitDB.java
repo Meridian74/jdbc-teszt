@@ -23,7 +23,7 @@ public class InitDB {
       try (Connection conn = dataSource.getConnection();
            Statement sm = conn.createStatement()
       ) {
-         sm.execute("DROP TABLE IF EXISTS item_prices");
+         sm.execute("DROP TABLE IF EXISTS item_prices CASCADE");
          sm.execute("CREATE TABLE item_prices " +
                "(item_id bigint PRIMARY KEY, " +
                "item_price bigint, " +
@@ -121,12 +121,12 @@ public class InitDB {
       try (Connection conn = dataSource.getConnection();
            Statement sm = conn.createStatement()
       ) {
-         sm.execute("DROP TABLE IF EXISTS trans_and_items");
+         sm.execute("DROP TABLE IF EXISTS trans_and_items CASCADE");
          sm.execute("CREATE TABLE trans_and_items " +
                "(transaction_id bigint, " +
                "item_id bigint, " +
                "quantity bigint, " +
-               "CONSTRAINT fk_itemid FOREIGN KEY (item_id) REFERENCES items(item_id), " +
+               "CONSTRAINT fk_itemid FOREIGN KEY (item_id) REFERENCES item_prices(item_id), " +
                "CONSTRAINT fk_transid FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id), " +
                "UNIQUE (transaction_id, item_id))"
          );

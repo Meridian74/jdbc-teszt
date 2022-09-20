@@ -45,6 +45,7 @@ public class AppController {
         TransactionSaveIntoDB tsidb = new TransactionSaveIntoDB(transactionDAO);
         tsidb.saveTransactionsIntoDB(transactions);
 
+
         // end of program
         System.out.println("Az alkalmazás futása véget ért!");
 
